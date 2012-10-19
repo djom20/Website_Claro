@@ -1,0 +1,6 @@
+links
+	rbg(182,43,36)
+	#b62b24
+fondo o barra
+	rbg(216,50,34)
+	#d83222
