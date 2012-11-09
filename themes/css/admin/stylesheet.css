@@ -1,0 +1,6 @@
+* { cursor: pointer !important; }
+.base{ display: none; }
+td{ text-align: center !important; }
+.icon-globe {
+	background-position: -336px -144px !important;
+}

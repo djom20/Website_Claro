@@ -4,7 +4,6 @@
 			<li id="linkhome2"><a href="#"><img id="menulogo" src="../themes/img/menu/logo-claro.png" alt="Logo Claro" width="290"></a></li>
 			<li id="linkusuario"><a href="#usuario">Usuario</a></li>
 			<li id="linkcompra"><a href="#compra">Compras</a></li>
-			<li id="linkfacturas"><a href="#facturas">Facturas</a></li>
 			<li id="linkcontacto2"><a href="#contacto">Contacto</a></li>
 			<li id="linksalir"><a href="../consultas/salir.php">Salir</a></li>
 	   	</ul>

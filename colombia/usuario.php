@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	if(!isset($_SESSION['userid'])){ header('location: ../'); }
 ?>
 <!DOCTYPE HTML>
@@ -14,9 +13,9 @@
 	<link rel="stylesheet" type="text/css" href="../themes/css/bootstrap-responsive.min.css" media="all">
 	<link rel="stylesheet" type="text/css" href="../themes/css/bootstrap.min.css" media="all">
 	<link rel="stylesheet" type="text/css" href="../themes/css/stylesheet.css" media="all">
-	<link rel="stylesheet" type="text/css" href="../themes/css/usuarios.css" media="all">
+	<link rel="stylesheet" type="text/css" href="../themes/css/usuarios.css?id=<?php echo date('s'); ?>" media="all">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<title>Claro <?php if(isset($_REQUEST['ubicacion'])){ echo $_SESSION['ubicacion']; } ?></title>
+	<title>Claro <?php if(isset($_SESSION['ubicacion'])){ echo $_SESSION['ubicacion']; } ?></title>
 </head>
 <body class="container-fluid" data-spy="scroll">
 	<div class="row-fluid">

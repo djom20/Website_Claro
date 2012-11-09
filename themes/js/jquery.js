@@ -1,6 +1,7 @@
 $(window).ready(function(){
 	$("#linkhome").click(function(e){
 		$('#contacto,#videos,#movil,#publicidad,#compras,#datosusuarios,#compra,#facturas').hide(1000);
+		$('li').removeClass('active');
         $('#home').fadeIn(2000);
         return false;
         e.preventDefault();
@@ -8,6 +9,8 @@ $(window).ready(function(){
 
 	$("#linkcompras").click(function(e){
 		$('#contacto,#videos,#movil,#publicidad,#home,#datosusuarios,#compra,#facturas').hide(1000);
+		$('li').removeClass('active');
+		$('#linkcompras').addClass('active');
         $('#compras').fadeIn(2000);
         return false;
         e.preventDefault();
@@ -15,6 +18,8 @@ $(window).ready(function(){
 
 	$("#linkpromo").click(function(e){
 		$('#contacto,#videos,#movil,#compras,#home,#datosusuarios,#compra,#facturas').hide(1000);
+		$('li').removeClass('active');
+		$('#linkpromo').addClass('active');
         $('#publicidad').fadeIn(2000);
         return false;
         e.preventDefault();
@@ -22,6 +27,8 @@ $(window).ready(function(){
 
 	$("#linkmovil").click(function(e){
 		$('#contacto,#videos,#publicidad,#compras,#home,#datosusuarios,#compra,#facturas').hide(1000);
+		$('li').removeClass('active');
+		$('#linkmovil').addClass('active');
         $('#movil').fadeIn(2000);
         return false;
         e.preventDefault();
@@ -29,6 +36,8 @@ $(window).ready(function(){
 
 	$("#linkvideos").click(function(e){
 		$('#contacto,#movil,#publicidad,#compras,#home,#datosusuarios,#compra,#facturas').hide(1000);
+		$('li').removeClass('active');
+		$('#linkvideos').addClass('active');
         $('#videos').fadeIn(2000);
         return false;
         e.preventDefault();
@@ -36,6 +45,8 @@ $(window).ready(function(){
 
 	$("#linkcontacto").click(function(e){
 		$('#videos,#movil,#publicidad,#compras,#home,#datosusuarios,#compra,#facturas').hide(1000);
+		$('li').removeClass('active');
+		$('#linkcontacto').addClass('active');
         $('#contacto').fadeIn(2000);
         return false;
         e.preventDefault();
@@ -93,8 +104,17 @@ $(window).ready(function(){
         e.preventDefault();
 	});
 
-	$('#submitform_reg').click(function() {
-	  $('#formregistro').submit();
+	$("#cambioseccion2").click(function(e){
+        $('#registro_empresa').hide(1000);
+		$('#seccion').fadeIn(2000);
+        return false;
+        e.preventDefault();
 	});
-	
+
+	$("#cambioregistro").click(function(e){
+        $('#registro').hide(1000);
+		$('#registro_empresa').fadeIn(2000);
+        return false;
+        e.preventDefault();
+	});	
 });

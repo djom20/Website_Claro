@@ -10,6 +10,15 @@
 .hidden-tablet{display:block;}
 .hidden-desktop{display:none;}
 
+@media (min-width:507px) and (max-width:1200px){
+	#paises{ 
+		background-image: none;
+	}
+	nav #menu{
+		
+	}
+}
+
 @media (max-width:767px){
 	.visible-phone{display:block;} 
 	.hidden-phone{display:none;} 

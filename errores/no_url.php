@@ -9,14 +9,11 @@
 <!DOCTYPE HTML>
 <html lang="es">
 <head>
+	<meta charset="utf-8">
 	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
 	<meta http-equiv="window-target" content="_top" >
-	<meta http-equiv="expires" content="Sat, 4 Feb 2012 16:05:00 GMT" > <!-- FECHA EN QUE EXPIRA LA WEB -->
+	<meta http-equiv="expires" content="Sat, 4 Feb 2013 16:05:00 GMT" > <!-- FECHA EN QUE EXPIRA LA WEB -->
 	<meta http-equiv="refresh" content="15;URL=../colombia/" > <!-- TIEMPO EN LA CUAL SE RECARGARA LA PAGINA A ESTA -->
-	<!--
-	<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
-	-->
-
 	<meta name="robots" content="index">
 	<META name="robots" content="NOARCHIVE"> <!-- NO VER LA WEB EN EL CACHE DE GOOGLE -->
 	<meta name="distribution" content="global"> <!-- A QUIEN Y QUIEN NO SE LE MOSTRARA EL CONTENIDO -->

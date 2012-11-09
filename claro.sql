@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-10-2012 a las 05:25:55
+-- Tiempo de generación: 08-11-2012 a las 18:51:44
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.3.13
 
@@ -29,11 +29,20 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `compras` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuario` int(11) NOT NULL,
-  `fecha` date NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `total` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `usuario` (`usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `compras`
+--
+
+INSERT INTO `compras` (`id`, `usuario`, `fecha`, `total`) VALUES
+(1, 1140820188, '2012-10-24 03:58:35', 120000),
+(2, 1234567890, '2012-11-05 03:21:08', 1500000),
+(3, 1140820188, '2012-11-05 22:45:46', 395000);
 
 -- --------------------------------------------------------
 
@@ -44,14 +53,35 @@ CREATE TABLE IF NOT EXISTS `compras` (
 CREATE TABLE IF NOT EXISTS `cotizaciones` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuario` int(11) NOT NULL,
-  `pcomprar` int(11) NOT NULL COMMENT 'posible compra',
-  `paquete_servicio` int(11) NOT NULL,
+  `paquete` int(11) NOT NULL,
   `precio` int(11) NOT NULL,
-  `estado` int(11) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `estado` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `usuario` (`usuario`),
-  KEY `paquete_servicio` (`paquete_servicio`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `paquete` (`paquete`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+
+--
+-- Volcado de datos para la tabla `cotizaciones`
+--
+
+INSERT INTO `cotizaciones` (`id`, `usuario`, `paquete`, `precio`, `fecha`, `estado`) VALUES
+(1, 1140820188, 1, 40000, '2012-10-24 03:58:35', 0),
+(2, 1140820188, 2, 80000, '2012-11-05 22:45:47', 0),
+(3, 1140820188, 7, 220000, '2012-11-05 22:45:47', 0),
+(4, 1140820188, 3, 95000, '2012-11-05 22:45:47', 0),
+(5, 1547522200, 2, 80000, '2012-11-08 18:45:39', 1),
+(6, 1547522200, 5, 150000, '2012-11-08 18:45:44', 1),
+(7, 1547522200, 5, 150000, '2012-11-08 18:45:47', 1),
+(8, 1547522200, 3, 95000, '2012-11-08 18:45:51', 1),
+(9, 1458552458, 2, 80000, '2012-11-08 18:46:20', 1),
+(10, 1458552458, 7, 220000, '2012-11-08 18:46:22', 1),
+(11, 1458552458, 1, 40000, '2012-11-08 18:46:27', 1),
+(12, 1234567890, 2, 80000, '2012-11-08 18:47:02', 1),
+(13, 1234567890, 7, 220000, '2012-11-08 18:47:05', 1),
+(14, 1234567890, 3, 95000, '2012-11-08 18:47:09', 1),
+(15, 1234567890, 4, 120000, '2012-11-08 18:47:13', 1);
 
 -- --------------------------------------------------------
 
@@ -66,7 +96,18 @@ CREATE TABLE IF NOT EXISTS `detalles_compra` (
   PRIMARY KEY (`id`),
   KEY `usuario` (`compra`),
   KEY `paquetes` (`paquete`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Volcado de datos para la tabla `detalles_compra`
+--
+
+INSERT INTO `detalles_compra` (`id`, `compra`, `paquete`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 3, 2),
+(4, 3, 7),
+(5, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -81,7 +122,15 @@ CREATE TABLE IF NOT EXISTS `detalles_factura` (
   PRIMARY KEY (`id`),
   KEY `factura` (`factura`),
   KEY `compra` (`compra`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `detalles_factura`
+--
+
+INSERT INTO `detalles_factura` (`id`, `factura`, `compra`) VALUES
+(1, 1, 1),
+(2, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -96,11 +145,18 @@ CREATE TABLE IF NOT EXISTS `empresa` (
   `direccion` varchar(255) NOT NULL,
   `correo` varchar(255) NOT NULL,
   `ubicacion` int(11) NOT NULL,
-  `ususario` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `ubicacion` (`ubicacion`),
-  KEY `ususario` (`ususario`)
+  KEY `ususario` (`usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `empresa`
+--
+
+INSERT INTO `empresa` (`id`, `nombre`, `representante`, `direccion`, `correo`, `ubicacion`, `usuario`) VALUES
+(45488451, 'Sileco', 'Brayan Torne', 'calle 74 - 1 # 70 - 14', 'sileco@gmail.com', 14, 1458552458);
 
 -- --------------------------------------------------------
 
@@ -111,115 +167,38 @@ CREATE TABLE IF NOT EXISTS `empresa` (
 CREATE TABLE IF NOT EXISTS `facturas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuario` int(11) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `usuario` (`usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `facturas`
+--
+
+INSERT INTO `facturas` (`id`, `usuario`, `fecha`) VALUES
+(1, 1140820188, '2012-10-24 03:58:35'),
+(2, 1140820188, '2012-11-05 22:45:47');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `paquetes`
+-- Estructura de tabla para la tabla `paises`
 --
 
-CREATE TABLE IF NOT EXISTS `paquetes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) NOT NULL,
-  `descricion` varchar(255) NOT NULL,
-  `precio` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
-
---
--- Volcado de datos para la tabla `paquetes`
---
-
-INSERT INTO `paquetes` (`id`, `nombre`, `descricion`, `precio`) VALUES
-(1, '', '40 min', 15000),
-(2, '', '80 min', 60000),
-(3, '', '120 min', 90000),
-(4, '', '180 min', 135000),
-(5, '', '1 MB', 150000),
-(6, '', '2 MB', 160000),
-(7, '', '1 MB', 60000),
-(8, '', '2 MB', 80000),
-(9, '', '2 MB', 45000),
-(10, '', '4 MB', 70000),
-(11, '', '8 MB', 120000),
-(12, '', '1 GB', 250000),
-(13, '', '2 GB', 450000),
-(14, '', '4 GB', 800000),
-(15, '', 'Digital', 60000),
-(16, '', 'Digital Avanzada', 95000),
-(17, '', 'Full HD', 160000),
-(18, '', '150 min', 25000),
-(19, '', '500 min', 40000),
-(20, '', 'Ilimitado', 85000),
-(21, '', '450 min', 150000),
-(22, '', '900 min', 180000),
-(23, '', 'Ilimitado', 120000);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `paquetes_servicios`
---
-
-CREATE TABLE IF NOT EXISTS `paquetes_servicios` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `paquete` int(11) NOT NULL,
-  `servicio` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `paquete` (`paquete`),
-  KEY `servicio` (`servicio`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
-
---
--- Volcado de datos para la tabla `paquetes_servicios`
---
-
-INSERT INTO `paquetes_servicios` (`id`, `paquete`, `servicio`) VALUES
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 2),
-(4, 4, 2),
-(5, 5, 3),
-(6, 6, 3),
-(7, 7, 4),
-(8, 8, 4),
-(9, 9, 5),
-(10, 10, 5),
-(11, 11, 5),
-(12, 12, 6),
-(13, 13, 6),
-(14, 14, 6),
-(15, 15, 7),
-(16, 16, 7),
-(17, 17, 7),
-(18, 18, 8),
-(19, 19, 8),
-(20, 20, 8),
-(21, 21, 9),
-(22, 22, 9),
-(23, 23, 9);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pasies`
---
-
-CREATE TABLE IF NOT EXISTS `pasies` (
+CREATE TABLE IF NOT EXISTS `paises` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
   `estado` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `nombre` (`nombre`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
--- Volcado de datos para la tabla `pasies`
+-- Volcado de datos para la tabla `paises`
 --
 
-INSERT INTO `pasies` (`id`, `nombre`, `estado`) VALUES
+INSERT INTO `paises` (`id`, `nombre`, `estado`) VALUES
 (1, 'Argentina', 1),
 (2, 'Brasil', 1),
 (3, 'Peru', 1),
@@ -236,6 +215,78 @@ INSERT INTO `pasies` (`id`, `nombre`, `estado`) VALUES
 (14, 'Costa Rica', 1),
 (15, 'Ecuador', 1),
 (16, 'Panama', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `paquetes`
+--
+
+CREATE TABLE IF NOT EXISTS `paquetes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) NOT NULL,
+  `precio` int(11) NOT NULL,
+  `estado` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Volcado de datos para la tabla `paquetes`
+--
+
+INSERT INTO `paquetes` (`id`, `nombre`, `precio`, `estado`) VALUES
+(1, 'Personal', 40000, 1),
+(2, 'Basico', 80000, 1),
+(3, 'Premium', 95000, 1),
+(4, 'Gold', 120000, 1),
+(5, 'Profesional', 150000, 1),
+(6, 'Empresarial', 180000, 1),
+(7, 'Xtreme', 220000, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `paquetes_servicios`
+--
+
+CREATE TABLE IF NOT EXISTS `paquetes_servicios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `paquete` int(11) NOT NULL,
+  `servicio` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `paquete` (`paquete`),
+  KEY `servicio` (`servicio`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+
+--
+-- Volcado de datos para la tabla `paquetes_servicios`
+--
+
+INSERT INTO `paquetes_servicios` (`id`, `paquete`, `servicio`) VALUES
+(1, 1, 1),
+(2, 1, 5),
+(3, 2, 1),
+(4, 2, 5),
+(5, 2, 15),
+(6, 3, 1),
+(7, 3, 7),
+(8, 3, 15),
+(9, 4, 1),
+(10, 4, 6),
+(11, 4, 18),
+(12, 5, 2),
+(13, 5, 5),
+(14, 5, 16),
+(15, 5, 20),
+(16, 6, 3),
+(17, 6, 13),
+(18, 6, 16),
+(19, 6, 22),
+(20, 7, 4),
+(21, 7, 8),
+(22, 7, 14),
+(23, 7, 23),
+(24, 7, 17);
 
 -- --------------------------------------------------------
 
@@ -269,9 +320,11 @@ CREATE TABLE IF NOT EXISTS `persona` (
 INSERT INTO `persona` (`id`, `nombre`, `nombre2`, `apellido`, `apellido2`, `correo`, `direccion`, `ubicacion`, `usuario`) VALUES
 (1140820188, 'Jonathan', NULL, 'Olier', 'Miranda', 'djom202@gmail.com', 'calle 74 - 1 # 70 - 14', 13, 1140820188),
 (1234567890, 'Sharon', '', 'Olier', 'Miranda', 'sharon@gmail.com', 'Calle 74-1 # 70 - 14 - 6', 13, 1234567890),
-(1254854795, 'Yaledys', 'Paola', 'Machacon', 'Garces', 'yaledyspaola@gmail.com', 'calle 74 - 1 # 70 - 14 - 2', 13, 1458552458),
+(1458552458, 'Yaledys', 'Paola', 'Machacon', 'Garces', 'yaledyspaola@gmail.com', 'calle 74 - 1 # 70 - 14 - 2', 13, 1458552458),
+(1547522200, 'Claudia', '', 'Manotas', 'Santrich', 'clau@gmail.com', 'Calle 74-1 # 70 - 14 - 10', 13, 1547522200),
 (1547625435, 'Norman', 'de jesus', 'Henriquez', 'Rosales', 'nor_man89@hotmail.com', 'Calle 74-1 # 70 - 14 - 3', 13, 1547625435),
-(1548847878, 'Brayan', 'Rafael', 'Torne', 'Barraza', 'bratus@gmail.com', 'Calle 74-1 # 70 - 14 - 4', 13, 1548847878);
+(1548847878, 'Brayan', 'Rafael', 'Torne', 'Barraza', 'bratus@gmail.com', 'Calle 74-1 # 70 - 14 - 4', 13, 1548847878),
+(2147483647, 'Katina', 'Miranda', 'Charris', 'Garces', 'katina@gmail.com', 'Calle 74-1 # 70 - 14 - 8', 13, 2147483647);
 
 -- --------------------------------------------------------
 
@@ -282,24 +335,40 @@ INSERT INTO `persona` (`id`, `nombre`, `nombre2`, `apellido`, `apellido2`, `corr
 CREATE TABLE IF NOT EXISTS `servicios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
+  `descripcion` varchar(255) NOT NULL,
+  `precio` int(11) NOT NULL,
   `estado` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
 
 --
 -- Volcado de datos para la tabla `servicios`
 --
 
-INSERT INTO `servicios` (`id`, `nombre`, `estado`) VALUES
-(1, 'telefonia movil (prepago)', 1),
-(2, 'telefonia movil (postpago)', 1),
-(3, 'internet movil (prepago)', 1),
-(4, 'internet movil (postpago)', 1),
-(5, 'internet banda ancha (personal)', 1),
-(6, 'internet banda ancha (empresarial)', 1),
-(7, 'television (personal)', 1),
-(8, 'telefonia fija (personal)', 1),
-(9, 'telefonia fija (empresarial)', 1);
+INSERT INTO `servicios` (`id`, `nombre`, `descripcion`, `precio`, `estado`) VALUES
+(1, 'telefonia movil (prepago)', '40 min', 15000, 1),
+(2, 'telefonia movil (postpago)', '80 min', 60000, 1),
+(3, 'telefonia movil (postpago) 2', '120 min', 90000, 1),
+(4, 'telefonia movil (postpago) 3', '180 min', 135000, 1),
+(5, 'internet movil (prepago)', '1MB', 150000, 1),
+(6, 'internet movil (prepago) 2', '2 MB', 160000, 1),
+(7, 'internet movil (postpago)', '1 MB', 60000, 1),
+(8, 'internet movil (postpago) 2', '2 MB', 80000, 1),
+(9, 'internet banda ancha (personal)', '2 MB', 45000, 1),
+(10, 'internet banda ancha (personal) 2', '4 MB', 70000, 1),
+(11, 'internet banda ancha (personal) 3', '8 MB', 120000, 1),
+(12, 'internet banda ancha (empresarial)', '1 GB', 250000, 1),
+(13, 'internet banda ancha (empresarial) 2', '2 GB', 450000, 1),
+(14, 'internet banda ancha (empresarial) 3', '4 GB', 800000, 1),
+(15, 'television (personal)', 'digital', 60000, 1),
+(16, 'television (personal) 2', 'digital avanzada', 95000, 1),
+(17, 'television (personal) 3', 'Full HD', 130000, 1),
+(18, 'telefonia fija (personal)', '150 min', 25000, 1),
+(19, 'telefonia fija (personal) 2', '500 min', 40000, 1),
+(20, 'telefonia fija (personal) 3', 'ilimitado', 85000, 1),
+(21, 'telefonia fija (empresarial)', '450 min', 150000, 1),
+(22, 'telefonia fija (empresarial) 2', '900 min', 180000, 1),
+(23, 'telefonia fija (empresarial) 3', 'ilimitado', 220000, 1);
 
 -- --------------------------------------------------------
 
@@ -310,26 +379,63 @@ INSERT INTO `servicios` (`id`, `nombre`, `estado`) VALUES
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int(11) NOT NULL,
   `user` varchar(255) NOT NULL,
-  `pass` varchar(255) NOT NULL,
+  `pass` varchar(255) DEFAULT NULL,
+  `ip` varchar(255) NOT NULL,
   `tipo` int(11) NOT NULL DEFAULT '1',
   `online` int(11) NOT NULL DEFAULT '0',
   `estado` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `user` (`user`),
-  KEY `tipo` (`tipo`)
+  KEY `tipo` (`tipo`),
+  KEY `user` (`user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `user`, `pass`, `tipo`, `online`, `estado`) VALUES
-(1140820188, 'djom20', 'e10adc3949ba59abbe56e057f20f883e', 2, 0, 1),
-(1234567890, 'sharon', 'e10adc3949ba59abbe56e057f20f883e', 2, 0, 1),
-(1234567899, 'sharo2', 'e10adc3949ba59abbe56e057f20f883e', 2, 0, 1),
-(1458552458, 'yale', 'e10adc3949ba59abbe56e057f20f883e', 2, 0, 1),
-(1547625435, 'norman', 'e10adc3949ba59abbe56e057f20f883e', 3, 0, 1),
-(1548847878, 'bratus', 'e10adc3949ba59abbe56e057f20f883e', 2, 0, 1);
+INSERT INTO `usuarios` (`id`, `user`, `pass`, `ip`, `tipo`, `online`, `estado`) VALUES
+(0, '', '', '', 2, 0, 1),
+(1, 'unregistered1', NULL, '127.0.0.1', 1, 0, 1),
+(2, 'unregistered2', NULL, '127.0.0.1', 1, 0, 1),
+(3, 'unregistered3', NULL, '127.0.0.1', 1, 0, 1),
+(4, 'unregistered4', NULL, '127.0.0.1', 1, 0, 1),
+(5, 'unregistered5', NULL, '127.0.0.1', 1, 0, 1),
+(6, 'unregistered6', NULL, '127.0.0.1', 1, 0, 1),
+(7, 'unregistered7', NULL, '127.0.0.1', 1, 0, 1),
+(8, 'unregistered8', NULL, '127.0.0.1', 1, 0, 1),
+(9, 'unregistered9', NULL, '127.0.0.1', 1, 0, 1),
+(10, 'unregistered10', NULL, '127.0.0.1', 1, 0, 1),
+(11, 'unregistered11', NULL, '127.0.0.1', 1, 0, 1),
+(12, 'unregistered12', NULL, '127.0.0.1', 1, 0, 1),
+(13, 'unregistered13', NULL, '127.0.0.1', 1, 0, 1),
+(14, 'unregistered14', NULL, '127.0.0.1', 1, 0, 1),
+(15, 'unregistered15', NULL, '127.0.0.1', 1, 0, 1),
+(16, 'unregistered16', NULL, '127.0.0.1', 1, 0, 1),
+(17, 'unregistered17', NULL, '127.0.0.1', 1, 0, 1),
+(18, 'unregistered18', NULL, '127.0.0.1', 1, 0, 1),
+(19, 'unregistered19', NULL, '127.0.0.1', 1, 0, 1),
+(20, 'unregistered20', NULL, '127.0.0.1', 1, 0, 1),
+(21, 'unregistered21', NULL, '127.0.0.1', 1, 0, 1),
+(22, 'unregistered22', NULL, '127.0.0.1', 1, 0, 1),
+(23, 'unregistered23', NULL, '127.0.0.1', 1, 0, 1),
+(24, 'unregistered24', NULL, '127.0.0.1', 1, 0, 1),
+(25, 'unregistered25', NULL, '127.0.0.1', 1, 0, 1),
+(26, 'unregistered26', NULL, '127.0.0.1', 1, 0, 1),
+(27, 'unregistered27', NULL, '127.0.0.1', 1, 0, 1),
+(28, 'unregistered28', NULL, '127.0.0.1', 1, 0, 1),
+(29, 'unregistered29', NULL, '127.0.0.1', 1, 0, 1),
+(30, 'unregistered30', NULL, '127.0.0.1', 1, 0, 1),
+(31, 'unregistered31', NULL, '127.0.0.1', 1, 0, 1),
+(32, 'unregistered32', NULL, '127.0.0.1', 1, 0, 1),
+(1140820188, 'djom20', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', 3, 1, 1),
+(1234567890, 'sharon', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', 2, 0, 1),
+(1234567899, 'sharo2', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', 2, 0, 1),
+(1458552458, 'yale', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', 2, 0, 1),
+(1547522200, 'claudia1', '46c0b823fc72c86211b6ebf887ab4b63', '127.0.0.1', 2, 0, 1),
+(1547625435, 'norman', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', 3, 0, 1),
+(1548847878, 'bratus', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', 2, 0, 1),
+(1554884121, 'frfr887', 'eb41f9e1c60b47ec77213aab15bc82bb', '127.0.0.1', 2, 0, 0),
+(2147483647, 'kata12', '8fea77c48649b2556953f461781295e8', '', 2, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -362,14 +468,14 @@ INSERT INTO `usuarios_tipo` (`id`, `nombre`, `descripcion`, `estado`) VALUES
 -- Filtros para la tabla `compras`
 --
 ALTER TABLE `compras`
-  ADD CONSTRAINT `compras_ibfk_3` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`id`);
+  ADD CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`id`);
 
 --
 -- Filtros para la tabla `cotizaciones`
 --
 ALTER TABLE `cotizaciones`
   ADD CONSTRAINT `cotizaciones_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`id`),
-  ADD CONSTRAINT `cotizaciones_ibfk_2` FOREIGN KEY (`paquete_servicio`) REFERENCES `paquetes_servicios` (`id`);
+  ADD CONSTRAINT `cotizaciones_ibfk_2` FOREIGN KEY (`paquete`) REFERENCES `paquetes` (`id`);
 
 --
 -- Filtros para la tabla `detalles_compra`
@@ -389,8 +495,8 @@ ALTER TABLE `detalles_factura`
 -- Filtros para la tabla `empresa`
 --
 ALTER TABLE `empresa`
-  ADD CONSTRAINT `empresa_ibfk_1` FOREIGN KEY (`ubicacion`) REFERENCES `pasies` (`id`),
-  ADD CONSTRAINT `empresa_ibfk_2` FOREIGN KEY (`ususario`) REFERENCES `usuarios` (`id`);
+  ADD CONSTRAINT `empresa_ibfk_1` FOREIGN KEY (`ubicacion`) REFERENCES `paises` (`id`),
+  ADD CONSTRAINT `empresa_ibfk_2` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`id`);
 
 --
 -- Filtros para la tabla `facturas`
@@ -402,15 +508,15 @@ ALTER TABLE `facturas`
 -- Filtros para la tabla `paquetes_servicios`
 --
 ALTER TABLE `paquetes_servicios`
-  ADD CONSTRAINT `paquetes_servicios_ibfk_2` FOREIGN KEY (`paquete`) REFERENCES `paquetes` (`id`),
-  ADD CONSTRAINT `paquetes_servicios_ibfk_3` FOREIGN KEY (`servicio`) REFERENCES `servicios` (`id`);
+  ADD CONSTRAINT `paquetes_servicios_ibfk_1` FOREIGN KEY (`paquete`) REFERENCES `paquetes` (`id`),
+  ADD CONSTRAINT `paquetes_servicios_ibfk_2` FOREIGN KEY (`servicio`) REFERENCES `servicios` (`id`);
 
 --
 -- Filtros para la tabla `persona`
 --
 ALTER TABLE `persona`
   ADD CONSTRAINT `persona_ibfk_2` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`id`),
-  ADD CONSTRAINT `persona_ibfk_3` FOREIGN KEY (`ubicacion`) REFERENCES `pasies` (`id`);
+  ADD CONSTRAINT `persona_ibfk_3` FOREIGN KEY (`ubicacion`) REFERENCES `paises` (`id`);
 
 --
 -- Filtros para la tabla `usuarios`

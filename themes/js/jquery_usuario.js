@@ -20,15 +20,8 @@ $(window).ready(function(){
         e.preventDefault();
 	});
 
-	$("#linkfacturas").click(function(e){
-		$('#home,#datosusuarios,#compra,#contacto').hide(1000);
-        $('#facturas').fadeIn(2000);
-        return false;
-        e.preventDefault();
-	});
-
 	$("#linkcontacto2").click(function(e){
-		$('#home,#datosusuarios,#compra,#facturas').hide(1000);
+		$('#home,#datosusuarios,#compra').hide(1000);
         $('#contacto').fadeIn(2000);
         return false;
         e.preventDefault();

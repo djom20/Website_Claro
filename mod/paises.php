@@ -14,7 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<title>Claro International</title>
 </head>
-<body id="bodypaises" class="container-fluid" data-spy="scroll">
+<body id="bodypaises" class="container-fluid">
 	<div class="row-fluid">
 		<div id="paises">
 			<div id="bienvenido">Bienvenido</div>
@@ -27,7 +27,7 @@
 				<br/>
 				<br/>
 			</form>
-			<p>Todos los derechos reservados por Claro 2012.</p>
+			<p><strong>Todos los derechos reservados por Claro 2012.</strong></p>
 		</div>
 	</div>
 </body>

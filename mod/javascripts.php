@@ -22,13 +22,11 @@
 			$('.carousel').carousel({interval: 2000});
 			$(".alert").alert('close');
 			$('#myModal').modal();			
-			$('#cambioseccion').tooltip('toggle');
-			$('#resetform_reg').tooltip('toggle');
-			$('#submitform_reg').tooltip('toggle');
-			$('#resetform_cont').tooltip('toggle');
-			$('#submitform_cont').tooltip('toggle');
-			$('#resetform_sec').tooltip('toggle');
-			$('#submitform_sec').tooltip('toggle');
+			
+			$('.btn').tooltip('toggle');
+			$('.icon-star-empty').tooltip('toggle');
+			$('.icon-star').tooltip('toggle');
+			$('.icon-eye-open').tooltip('toggle');
 		});
 	</script>
 	<!—[if lt IE 9]>

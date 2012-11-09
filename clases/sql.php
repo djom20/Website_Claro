@@ -1,6 +1,10 @@
 <?php
-	$result=mysql_query($sql,$link);
-    $my_error = mysql_error($link);
-    mysql_close();
-    /*if(!empty($my_error)){ header('location: ../errores/no_url.php?error='.$my_error()); }*/
+    try {
+    	$result=mysql_query($sql,$link);
+	}
+	catch (Exception $e){
+		header('location: errores/no_url.php?error=<br>No se pudo ejecutar la consulta.<br>'.mysql_error($link));
+	    mysql_close($link);
+	    return false;
+	}  
 ?>

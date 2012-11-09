@@ -2,7 +2,7 @@
 	<div class="row-fluid">
 		<ul class="nav unstyled">
 			<li id="linkhome"><a href="#home"><img id="menulogo" src="../themes/img/menu/logo-claro.png" alt="Logo Claro" width="290"></a></li>
-			<li id="linkcompras"><a href="#compras">Seccion</a></li>
+			<li id="linkcompras" class="active"><a href="#compras">Seccion</a></li>
 			<li id="linkpromo"><a href="#publicidad">Promociones</a></li>
 			<li id="linkmovil"><a href="#movil">Claro movil</a></li>
 			<li id="linkvideos"><a href="#videos">Videos</a></li>

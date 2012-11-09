@@ -1,34 +1,16 @@
-#menulogo { margin-left: -23%; }
-footer { margin-top: 25%; }
+#compra{ margin-left: -3%; margin-top: 4%; } 
 #datosusuarios{ display: block; }
-.datawell{
-	background-position: 100% !important;
-	margin-left: 5%;
-	margin-top: 4%;
-	width: 50em !important;
-}
-#seccion { background-size: 62% 100% !important; }
-#msjb{ text-transform: uppercase; font-size: 1.5em; margin-top: 6%; }
-#listado_compras{
-	height: 13em;
-	overflow-y: auto;
-	overflow-x: hidden;
-	width: 37%;
-}
-#list_compra{
-	color: #FFF;
-	width: 18em !important;
-}
-body th, h1, h2, h3, p{
-	color: #000;
-}
-#compra{
-	margin-left: -3%;
-	margin-top: 4%;
-}
-#precio{
-	width: 13em;
-}
-.table tbody tr:hover td, .table tbody tr:hover th {
-	background-color: #BD0D06;
-}
+#list_compra{ color: #FFF; width: 22em !important; } 
+#listado_compras{ height: 16em; overflow-y: auto; overflow-x: hidden; width: 66%; } 
+#menulogo { margin-left: -23%; }
+#msjb{ text-transform: uppercase; font-size: 1.5em; margin-top: 2%; }
+#precio{ width: 13em; } 
+#seccion { background-size: 53% 88% !important; }
+.datawell{ background-position: 100% !important; margin-left: 5%; margin-top: 4%; width: 50em !important; } 
+.table tbody tr:hover td, .table tbody tr:hover th { background-color: #BD0D06; }
+body th, h1, h2, h3, p{ color: #000; } 
+footer { margin-top: 58%; }
+footer p{ color: #FFF; }
+#titulocompra{ margin-top: 3%; }
+p{ color: #FFF !important; }
+#footercompra label{ font-size: 1.5em; margin-top: 2%; }

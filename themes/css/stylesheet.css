@@ -8,25 +8,24 @@
 ::-webkit-scrollbar-thumb { border-radius: 10px; -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); box-shadow: inset 0 0 6px rgba(0,0,0,0.5); background: #DD8800; }
 ::-webkit-scrollbar-thumb:window-inactive {background: #DD8800; }
 
-
 #base_form2 form{ padding-top: 1%; color: #FFF; width: 28%; } 
 #base_form2 label{ color: white; font-size: 1.5em; margin-bottom: 2%; text-transform: uppercase; } 
 #base_form2{ background-image: url('../img/compras/form_seccion.png'); background-position: 0% 283%; background-repeat: no-repeat; background-size: 43% 95%; margin-left: 34%; padding-bottom: 0.2%; padding-left: 3%; padding-top: 6%; width: 58%; } 
-#base_form3 form{ color: #FFF; margin-left: 9%; padding-top: 4%; } 
-#base_form3 label { color: white; font-size: 1.1em; text-transform: uppercase; } 
-#base_form3{ background-image: url('../img/compras/form_compras.png'); background-position: 1% 283%; background-repeat: no-repeat; background-size: 87% 100%; margin-left: 59%; padding-bottom: 1%; padding-left: 2%; padding-top: 2%; } 
+#base_form3 form{ color: #FFF; margin-left: 0%; padding-top: 2%; } 
+#base_form3 p { color: white; font-size: 1.1em; text-transform: uppercase; } 
+#base_form3{ background-image: url('../img/compras/form_compras.png'); background-position: 1% 283%; background-repeat: no-repeat; background-size: 95% 100%; margin-left: 39%; padding-bottom: 1%; padding-left: 2%; padding-top: 2%; }
 #base_form4 form{ width: 28em; } 
 #base_form4 ul{ height: 8em; overflow-y: auto; width: 26.5em; } 
-#base_form4{ background-image: url('../img/compras/form_lista.png'); background-position: 0% 283%; background-repeat: no-repeat; background-size: 89% 100%; margin-left: 45%; padding-bottom: 1%; padding-left: 2%; padding-top: 2%; color: #FFF; } 
+#base_form4 { background-image: url('../img/compras/form_lista.png'); background-position: 0% 283%; background-repeat: no-repeat; background-size: 100% 100%; margin-left: 45%; padding-bottom: 1%; padding-left: 2%; padding-top: 2%; color: #FFF; width: 31em } 
 #base_form{ background-image: url('../img/contacto/base_form.png'); background-repeat: no-repeat; background-size: 53% 100%; margin-left: 29%; margin-top: 8%; padding-bottom: 1%; } 
 #bienvenido{ background-color: #A12; color: #FFF; margin-left: -18%; padding-left: 18%; text-transform: uppercase; } 
 #bodypaises{ margin-left: 11%; margin-right: 12%; margin-top: 5%; } 
 #compras header {background-image: url('../img/titulos.png'); background-repeat: no-repeat; background-size: 67% 100%; color: #FFF; font-size: 2em; height: 1.5em; margin-top: 2%; padding-left: 5%; padding-top: 3%; text-transform: uppercase; width: 11em; } 
-#compras{ background-color: #FFF; height: 39em; margin-left: -6%; padding-top: 2%; width: 63em; } 
-#compra{ background-image: url('../img/compras/fondo2.jpg'); background-position: 0% 101%; background-repeat: no-repeat; background-size: 45% 83%; height: 33em; width: 63em; } 
+#compras{ background-color: #FFF; height: 42em; margin-left: -6%; padding-top: 2%; width: 63em; } 
+#compra{ background-image: url('../img/compras/fondo2.jpg'); background-position: 0% 105%; background-repeat: no-repeat; background-size: 44% 77%; height: 37em; width: 63em; } 
 #contacto header{ background-image: url('../img/titulos.png'); background-repeat: no-repeat; background-size: 67% 100%; color: #FFF; font-size: 2em; height: 1.5em; margin-left: 0.2%; margin-top: 2%; padding-left: 5%; padding-top: 3%; text-transform: uppercase; width: 11em; } 
 #contacto,#videos,#movil,#publicidad,#compra,#compras{ display: none; } 
-#contacto{ background-image: url('../img/contacto/fondo.jpg'); background-size: cover; height: 39.5em; margin-left: -5.3%; padding-top: 1%; width: 63em; } 
+#contacto{ background-image: url('../img/contacto/fondo.jpg'); background-size: cover; height: 42em; margin-left: -5.9%; padding-top: 1%; width: 63em; } 
 #contenido{ width: 270px !important; } 
 #enviar{ background-color: #b62b24; color: #FFF; } 
 #form_contacto{ padding-top: 2%; width: 41%; } 
@@ -35,26 +34,26 @@
 #home{ display: block; height: 39em; margin-left: -6%; width: 65em; }
 #ipad{ background-image: url('../img/videos/ipad.png'); background-size: cover; height: 23em; margin-left: 24%; width: 35em; } 
 #iphone{ background-image: url('../img/videos/iphone.png'); background-size: cover; height: 15em; margin-left: 28%; margin-top: 1%; width: 29em; } 
-#izq{ text-align: right; } 
+.der{ text-align: right !important; } 
 #link_videos a{ padding-bottom: 0.5%; padding-left: 2%; padding-right: 2%; padding-top: 0.5%; } 
 #link_videos2{ background-image: url('../img/videos/menu.png'); background-repeat: no-repeat; background-size: 95% 94%; margin-bottom: 14%; margin-left: 69%; padding: 1%; } 
 #link_videos{ background-image: url('../img/videos/menu.png'); background-repeat: no-repeat; background-size: 95% 94%; margin-bottom: 3%; margin-left: 69%; padding: 1%; } 
-#linkhome{ background-image: none; padding: 0; }
+#linkhome{ background-image: none !important; padding: 0; }
 #menulogo{ margin-left: 4%; margin-top: 5%; margin-bottom: 8%; }
 #movil header{ font-size: 3em; margin-left: 21%; margin-top: 8%; text-transform: uppercase; } 
-#movil{ background-image: url('../img/movil/fondo.jpg'); background-size: 99% 101%; height: 39em; margin-left: -6.3%; padding-top: 1%; width: 63em; } 
-#paises{ background-image: url('../img/paises.jpg'); background-repeat: no-repeat; padding-left: 15%; } 
-#publi1,#publi2,#publi3,#publi4,#publi5{ background-position: center; background-repeat: no-repeat; height: 39.8em; width: 63em; } 
+#movil{ background-image: url('../img/movil/fondo.jpg'); background-size: 99% 101%; height: 42em; margin-left: -5.9%; padding-top: 1%; width: 63em; } 
+#paises{ background-image: url('../img/paises.jpg'); background-size: 107% 111%; background-repeat: no-repeat; padding-left: 15%; } 
+#publi1,#publi2,#publi3,#publi4,#publi5{ background-position: center; background-repeat: no-repeat; height: 43em; width: 63em; } 
 #publi1{ background-image: url('../img/publicidad/publi1.jpg'); background-size: 104% 102%; } 
 #publi2{ background-image: url('../img/publicidad/publi2.jpg'); background-size: 100% 100%; } 
 #publi3{ background-image: url('../img/publicidad/publi3.jpg'); background-size: 100%; } 
 #publi4{ background-image: url('../img/publicidad/publi4.jpg'); background-size: 99% 102%; } 
 #publi5{ background-image: url('../img/publicidad/publi5.png'); background-size: 100% 101%; } 
-#publicidad{ height: 39em; margin-left: -6%; width: 63em; } 
+#publicidad{ height: 43em; margin-left: -5.8%; width: 63em; background-color: #FFF; } 
 #aregistro,#aregistro:hover,#aregistro:visited{ color: #08C !important; }
 #rojo{ color: #b62b24; } 
-#seccion{ background-image: url('../img/compras/fondo1.jpg'); background-position: 84%; background-repeat: no-repeat; background-size: 53% 100%; height: 33em; width: 63em; } 
-#slider1,#slider2,#slider3,#slider4{ background-size: 101% 100%; height: 40em; width: 66em; margin-left: -3.2%; } 
+#seccion{ background-image: url('../img/compras/fondo1.jpg'); background-position: 93% 165%; background-repeat: no-repeat; background-size: 50% 96%; height: 33em; width: 63em; } 
+#slider1,#slider2,#slider3,#slider4{ background-size: 101% 100%; height: 43em; width: 66em; margin-left: -3.2%; } 
 #slider1{ background-image: url('../img/home/slide1.jpg'); }
 #slider2{ background-image: url('../img/home/slide2.jpg'); }
 #slider3{ background-image: url('../img/home/slide3.jpg'); } 
@@ -63,7 +62,7 @@
 #video2,#video3,#video4,#video5{ display: none; } 
 #videoo{ padding-top: 5%; } 
 #videos header{ background-image: url('../img/titulos.png'); background-repeat: no-repeat; background-size: 67% 100%; color: #FFF; font-size: 2em; height: 1.5em; margin-top: 2%; padding-left: 5%; padding-top: 3%; text-transform: uppercase; width: 11em; } 
-#videos{ background-image: url('../img/videos/fondo.jpg'); background-size: cover; height: 39em; margin-left: -6.3%; padding-top: 1%; width: 63em; } 
+#videos{ background-image: url('../img/videos/fondo.jpg'); background-size: cover; height: 42em; margin-left: -5.8%; padding-top: 1%; width: 63em; } 
 #video{ padding-top: 10%; margin-left: -9%; } 
 * { cursor: pointer !important; }
 .form-actions{ padding: 10px 20px 10px; margin-top: 0%; margin-bottom: 0%; }
@@ -71,20 +70,33 @@
 body { font-size: 1em !important; padding: 0px !important; -ms-overflow-x: hidden; overflow-x: hidden; -ms-overflow-y: hidden; overflow-y: hidden; zoom: 100%; }
 footer img{ padding-left: 5%; }
 footer p{ font-size: 0.79em; margin-left: -7%; margin-right: -7%; margin-top: 2%; text-align: center; }
-footer{ margin-top: 20%; margin-bottom: 7%; padding-left: 3%; color: #FFF; }
+footer{ margin-top: 36%; margin-bottom: 7%; padding-left: 7%; color: #FFF; }
 input[type=text], input[type=email], input[type=password], input[type=date] { -moz-border-radius: 15px; -webkit-border-radius: 15px; border-radius: 15px; font-size: 13px; height: 11px; line-height: 18px; margin-bottom: 2px; text-align: center; } 
 nav a, a:visited, a:hover{ color: #FFF; }
 nav li a{ text-transform: uppercase; }
-nav li{ background-size: 0% 100%; line-height: 3em; margin-bottom: 1%; margin-left: -8%; margin-right: -8%; margin-top: 1%; padding-left: 25%; }
+nav li{line-height: 3em; margin-bottom: 1%; margin-left: -8%; margin-right: -8%; margin-top: 1%; padding-left: 25%; }
 nav{ background-color: #d83222; margin-left: -2% !important; }
 select { border-radius: 15px; width: 175px !important; } 
 textarea{ width: 302px; }
 #registro{ display: none; }
 #formregistro{ margin-left: 32%; margin-top: 4%; width: 25%; }
 #formpaises{ margin-bottom: 8% !important; }
-.wellplus{
-	background-color: #DF4F4F;
+.wellplus{ background-color: #DF4F4F; } 
+.center{ text-align: center; }
+#tablecompra { max-height: 12em; overflow-y: auto; width: 34em; }
+.neg{ color: #000 !important; }
+#tableresult{
+	overflow-y: auto;
+	width: 30em;
+	max-height: 10em;
 }
-.center{
-	text-align: center;
+nav li.active{
+	background-image: url('../img/menu/menu-active.png') !important;
+	background-position: 100%;
+	background-repeat: no-repeat;
+	background-size: 3%;
+	width: 88%;
+}
+#registro_empresa{
+	display: none;
 }
