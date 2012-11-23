@@ -1,8 +1,8 @@
 <?php 
-	$sql='SELECT `id`,`nombre` FROM `usuarios_tipo` WHERE `estado` = 1';
+	$sql='SELECT `id`,`nombre` FROM `paises` WHERE `id` > 0';
 	include('../clases/consultas.php');
 ?>
-<div id="usuarios_editar" class="base">
+<div id="empresas_editar" class="base">
 	<div id="content">
 		<div id="content-header">
 			<h1>Editar</h1>
@@ -10,8 +10,8 @@
 		<div id="breadcrumb">
 			<a href="./" class="linkhome tip-bottom" data-original-title="Go to Home"><i class="icon-home"></i> Home</a>
 			<a href=""><i class="icon-user"></i> Personal</a>
-			<a class="linkusuarios" href="#usuarios">Usuarios</a>
-			<a href="#usuarios_editar" class="current"><i class="icon icon-pencil"></i> Editar</a>
+			<a class="linkempresas" href="#usuarios">Empresas</a>
+			<a href="#empresas_editar" class="current"><i class="icon icon-pencil"></i> Editar</a>
 		</div>
 		<div class="container-fluid">
 			<div class="row-fluid">
@@ -21,22 +21,22 @@
 							<span class="icon">
 								<i class="icon-align-justify"></i>									
 							</span>
-							<h5>Editar Datos del Usuario</h5>
+							<h5>Editar Datos de la Empresa</h5>
 						</div>
 						<div class="widget-content nopadding">
-							<form action="../consultas/admin/update.php?tipo=1" method="POST" class="form-horizontal">
-								<div id="usuarioscargar"></div>
+							<form action="../consultas/admin/update.php?tipo=2" method="POST" class="form-horizontal">
+								<div id="empresascargar"></div>
 								<div class="control-group">
-									<label class="control-label">Tipo</label>
+									<label class="control-label">Ubicación</label>
 									<div class="controls">
-										<select name="tipou" id="">
+										<select name="ubicacion">
 											<?php 
 												if($result > 0){
 													while($row=mysql_fetch_array($result)){
 														echo '<option value="'.$row['id'].'">'.$row['nombre'].'</option>';
 													}
 												}
-											?>											
+											?>
 										</select>
 									</div>
 								</div>

@@ -27,6 +27,7 @@
 			$('.icon-star-empty').tooltip('toggle');
 			$('.icon-star').tooltip('toggle');
 			$('.icon-eye-open').tooltip('toggle');
+			$('.toggleform').tooltip('toggle');
 		});
 	</script>
 	<!—[if lt IE 9]>

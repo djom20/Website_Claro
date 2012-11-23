@@ -18,13 +18,13 @@
 			<div class="row-fluid">
 				<div class="span12">
 					<div class="btn-group" style="width: auto; ">
-						<a class="btn btn-large tip-bottom" data-original-title="Nuevo"><i class="icon-file"></i></a>
-						<a class="btn btn-large tip-bottom" data-original-title="Buscar"><i class="icon-search"></i></a>
+						<a id="new_paquetes" class="btn btn-large tip-bottom" data-original-title="Nuevo"><i class="icon-file"></i></a>
+						<!-- <a class="btn btn-large tip-bottom" data-original-title="Buscar"><i class="icon-search"></i></a> -->
 					</div>
 					<div class="widget-box">
 						<div class="widget-title">
 							<span class="icon">
-								<i class="icon-user"></i>
+								<i class="icon-shopping-cart"></i>
 							</span>
 							<h5>Listado de Paquetes</h5>
 							<span class="label">
@@ -49,7 +49,7 @@
 												echo '<tr><td>'.$row['id'].'</td><td>'.$row['nombre'].'</td><td>'.$row['precio'].'</td><td>';
 												if ($row['estado']==1) { echo '<a href="../consultas/admin/cambiar_estado.php?con=5&id='.$row['id'].'" class="tip-top" data-original-title="Activar"><i class="icon-ok"></i></a>'; }
 												else{ echo '<a href="../consultas/admin/cambiar_estado.php?con=5&id='.$row['id'].'" class="tip-top" data-original-title="Desactivar"><i class="icon-remove"></i></a>';}
-												echo '<td><a href="" class="tip-top" data-original-title="Editar"><i class="icon-pencil"></i></a></td></tr>';
+												echo '<td><a id="'.$row['id'].'" class="link_paquetes_editar" href="" class="tip-top" data-original-title="Editar"><i class="icon-pencil"></i></a></td></tr>';
 											}
 										}
 									?>

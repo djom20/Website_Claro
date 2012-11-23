@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-11-2012 a las 18:51:44
+-- Tiempo de generación: 18-11-2012 a las 04:02:29
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.3.13
 
@@ -31,18 +31,23 @@ CREATE TABLE IF NOT EXISTS `compras` (
   `usuario` int(11) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `total` int(11) NOT NULL,
+  `estado` int(11) NOT NULL DEFAULT '0' COMMENT 'pagado o no pagado',
   PRIMARY KEY (`id`),
   KEY `usuario` (`usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `compras`
 --
 
-INSERT INTO `compras` (`id`, `usuario`, `fecha`, `total`) VALUES
-(1, 1140820188, '2012-10-24 03:58:35', 120000),
-(2, 1234567890, '2012-11-05 03:21:08', 1500000),
-(3, 1140820188, '2012-11-05 22:45:46', 395000);
+INSERT INTO `compras` (`id`, `usuario`, `fecha`, `total`, `estado`) VALUES
+(1, 1140820188, '2012-10-24 03:58:35', 120000, 0),
+(2, 1234567890, '2012-11-05 03:21:08', 1500000, 0),
+(3, 1140820188, '2012-11-05 22:45:46', 395000, 0),
+(4, 1547522200, '2012-11-08 19:12:59', 475000, 0),
+(5, 1547522200, '2012-11-08 19:25:14', 480000, 1),
+(6, 1458552458, '2012-11-09 23:48:47', 740000, 0),
+(7, 0, '2012-11-16 00:43:57', 40000, 0);
 
 -- --------------------------------------------------------
 
@@ -60,28 +65,36 @@ CREATE TABLE IF NOT EXISTS `cotizaciones` (
   PRIMARY KEY (`id`),
   KEY `usuario` (`usuario`),
   KEY `paquete` (`paquete`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
 
 --
 -- Volcado de datos para la tabla `cotizaciones`
 --
 
 INSERT INTO `cotizaciones` (`id`, `usuario`, `paquete`, `precio`, `fecha`, `estado`) VALUES
-(1, 1140820188, 1, 40000, '2012-10-24 03:58:35', 0),
-(2, 1140820188, 2, 80000, '2012-11-05 22:45:47', 0),
+(1, 1140820188, 1, 40000, '2012-11-09 03:19:06', 1),
+(2, 1140820188, 2, 80000, '2012-11-09 03:19:50', 1),
 (3, 1140820188, 7, 220000, '2012-11-05 22:45:47', 0),
 (4, 1140820188, 3, 95000, '2012-11-05 22:45:47', 0),
-(5, 1547522200, 2, 80000, '2012-11-08 18:45:39', 1),
-(6, 1547522200, 5, 150000, '2012-11-08 18:45:44', 1),
-(7, 1547522200, 5, 150000, '2012-11-08 18:45:47', 1),
-(8, 1547522200, 3, 95000, '2012-11-08 18:45:51', 1),
-(9, 1458552458, 2, 80000, '2012-11-08 18:46:20', 1),
-(10, 1458552458, 7, 220000, '2012-11-08 18:46:22', 1),
-(11, 1458552458, 1, 40000, '2012-11-08 18:46:27', 1),
+(5, 1547522200, 2, 80000, '2012-11-08 19:13:00', 0),
+(6, 1547522200, 5, 150000, '2012-11-08 19:13:00', 0),
+(7, 1547522200, 5, 150000, '2012-11-08 19:13:00', 0),
+(8, 1547522200, 3, 95000, '2012-11-08 19:13:00', 0),
+(9, 1458552458, 2, 80000, '2012-11-09 23:48:47', 0),
+(10, 1458552458, 7, 220000, '2012-11-09 23:48:47', 0),
+(11, 1458552458, 1, 40000, '2012-11-16 00:53:54', 1),
 (12, 1234567890, 2, 80000, '2012-11-08 18:47:02', 1),
 (13, 1234567890, 7, 220000, '2012-11-08 18:47:05', 1),
 (14, 1234567890, 3, 95000, '2012-11-08 18:47:09', 1),
-(15, 1234567890, 4, 120000, '2012-11-08 18:47:13', 1);
+(15, 1234567890, 4, 120000, '2012-11-08 18:47:13', 1),
+(16, 1547522200, 2, 80000, '2012-11-09 03:20:00', 1),
+(17, 1547522200, 6, 180000, '2012-11-08 19:24:59', 0),
+(18, 1547522200, 7, 220000, '2012-11-08 19:24:59', 0),
+(19, 1458552458, 7, 220000, '2012-11-09 23:48:47', 0),
+(20, 1458552458, 6, 180000, '2012-11-09 23:48:47', 0),
+(21, 1458552458, 2, 80000, '2012-11-12 22:59:51', 1),
+(22, 0, 2, 80000, '2012-11-16 00:42:42', 0),
+(23, 0, 1, 40000, '2012-11-16 00:43:57', 0);
 
 -- --------------------------------------------------------
 
@@ -96,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `detalles_compra` (
   PRIMARY KEY (`id`),
   KEY `usuario` (`compra`),
   KEY `paquetes` (`paquete`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Volcado de datos para la tabla `detalles_compra`
@@ -107,7 +120,20 @@ INSERT INTO `detalles_compra` (`id`, `compra`, `paquete`) VALUES
 (2, 1, 2),
 (3, 3, 2),
 (4, 3, 7),
-(5, 3, 3);
+(5, 3, 3),
+(6, 4, 2),
+(7, 4, 5),
+(8, 4, 5),
+(9, 4, 3),
+(10, 5, 2),
+(11, 5, 6),
+(12, 5, 7),
+(13, 6, 2),
+(14, 6, 7),
+(15, 6, 1),
+(16, 6, 7),
+(17, 6, 6),
+(18, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -122,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `detalles_factura` (
   PRIMARY KEY (`id`),
   KEY `factura` (`factura`),
   KEY `compra` (`compra`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Volcado de datos para la tabla `detalles_factura`
@@ -130,7 +156,12 @@ CREATE TABLE IF NOT EXISTS `detalles_factura` (
 
 INSERT INTO `detalles_factura` (`id`, `factura`, `compra`) VALUES
 (1, 1, 1),
-(2, 2, 3);
+(2, 2, 3),
+(3, 3, 4),
+(5, 4, 2),
+(6, 5, 5),
+(7, 6, 6),
+(8, 7, 7);
 
 -- --------------------------------------------------------
 
@@ -170,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `facturas` (
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `usuario` (`usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `facturas`
@@ -178,7 +209,12 @@ CREATE TABLE IF NOT EXISTS `facturas` (
 
 INSERT INTO `facturas` (`id`, `usuario`, `fecha`) VALUES
 (1, 1140820188, '2012-10-24 03:58:35'),
-(2, 1140820188, '2012-11-05 22:45:47');
+(2, 1140820188, '2012-11-05 22:45:47'),
+(3, 1547522200, '2012-11-08 19:13:00'),
+(4, 1234567890, '2012-11-08 19:15:12'),
+(5, 1547522200, '2012-11-08 19:24:59'),
+(6, 1458552458, '2012-11-09 23:48:47'),
+(7, 0, '2012-11-16 00:43:57');
 
 -- --------------------------------------------------------
 
@@ -394,48 +430,26 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `user`, `pass`, `ip`, `tipo`, `online`, `estado`) VALUES
-(0, '', '', '', 2, 0, 1),
+(0, 'milfranb', '5ae36aef046ed7471835d5816558e6a2', '127.0.0.1', 2, 0, 1),
 (1, 'unregistered1', NULL, '127.0.0.1', 1, 0, 1),
-(2, 'unregistered2', NULL, '127.0.0.1', 1, 0, 1),
-(3, 'unregistered3', NULL, '127.0.0.1', 1, 0, 1),
-(4, 'unregistered4', NULL, '127.0.0.1', 1, 0, 1),
-(5, 'unregistered5', NULL, '127.0.0.1', 1, 0, 1),
-(6, 'unregistered6', NULL, '127.0.0.1', 1, 0, 1),
-(7, 'unregistered7', NULL, '127.0.0.1', 1, 0, 1),
-(8, 'unregistered8', NULL, '127.0.0.1', 1, 0, 1),
-(9, 'unregistered9', NULL, '127.0.0.1', 1, 0, 1),
-(10, 'unregistered10', NULL, '127.0.0.1', 1, 0, 1),
+(2, 'unregistered2', NULL, '127.0.0.1', 1, 0, 0),
+(3, 'unregistered3', NULL, '127.0.0.1', 1, 0, 0),
+(4, 'unregistered4', NULL, '127.0.0.1', 1, 0, 0),
+(5, 'unregistered5', NULL, '127.0.0.1', 1, 0, 0),
+(6, 'unregistered6', NULL, '127.0.0.1', 1, 0, 0),
+(7, 'unregistered7', NULL, '127.0.0.1', 1, 0, 0),
+(8, 'unregistered8', NULL, '127.0.0.1', 1, 0, 0),
+(9, 'unregistered9', NULL, '127.0.0.1', 1, 0, 0),
+(10, 'unregistered10', NULL, '127.0.0.1', 1, 1, 0),
 (11, 'unregistered11', NULL, '127.0.0.1', 1, 0, 1),
-(12, 'unregistered12', NULL, '127.0.0.1', 1, 0, 1),
-(13, 'unregistered13', NULL, '127.0.0.1', 1, 0, 1),
-(14, 'unregistered14', NULL, '127.0.0.1', 1, 0, 1),
-(15, 'unregistered15', NULL, '127.0.0.1', 1, 0, 1),
-(16, 'unregistered16', NULL, '127.0.0.1', 1, 0, 1),
-(17, 'unregistered17', NULL, '127.0.0.1', 1, 0, 1),
-(18, 'unregistered18', NULL, '127.0.0.1', 1, 0, 1),
-(19, 'unregistered19', NULL, '127.0.0.1', 1, 0, 1),
-(20, 'unregistered20', NULL, '127.0.0.1', 1, 0, 1),
-(21, 'unregistered21', NULL, '127.0.0.1', 1, 0, 1),
-(22, 'unregistered22', NULL, '127.0.0.1', 1, 0, 1),
-(23, 'unregistered23', NULL, '127.0.0.1', 1, 0, 1),
-(24, 'unregistered24', NULL, '127.0.0.1', 1, 0, 1),
-(25, 'unregistered25', NULL, '127.0.0.1', 1, 0, 1),
-(26, 'unregistered26', NULL, '127.0.0.1', 1, 0, 1),
-(27, 'unregistered27', NULL, '127.0.0.1', 1, 0, 1),
-(28, 'unregistered28', NULL, '127.0.0.1', 1, 0, 1),
-(29, 'unregistered29', NULL, '127.0.0.1', 1, 0, 1),
-(30, 'unregistered30', NULL, '127.0.0.1', 1, 0, 1),
-(31, 'unregistered31', NULL, '127.0.0.1', 1, 0, 1),
-(32, 'unregistered32', NULL, '127.0.0.1', 1, 0, 1),
 (1140820188, 'djom20', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', 3, 1, 1),
 (1234567890, 'sharon', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', 2, 0, 1),
-(1234567899, 'sharo2', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', 2, 0, 1),
+(1234567899, 'sharo2', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', 2, 0, 0),
 (1458552458, 'yale', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', 2, 0, 1),
 (1547522200, 'claudia1', '46c0b823fc72c86211b6ebf887ab4b63', '127.0.0.1', 2, 0, 1),
 (1547625435, 'norman', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', 3, 0, 1),
-(1548847878, 'bratus', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', 2, 0, 1),
-(1554884121, 'frfr887', 'eb41f9e1c60b47ec77213aab15bc82bb', '127.0.0.1', 2, 0, 0),
-(2147483647, 'kata12', '8fea77c48649b2556953f461781295e8', '', 2, 0, 1);
+(1548847878, 'bratus', 'e10adc3949ba59abbe56e057f20f883e', '127.0.0.1', 2, 0, 0),
+(2147483647, 'kata12', '8fea77c48649b2556953f461781295e8', '', 2, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -456,7 +470,7 @@ CREATE TABLE IF NOT EXISTS `usuarios_tipo` (
 --
 
 INSERT INTO `usuarios_tipo` (`id`, `nombre`, `descripcion`, `estado`) VALUES
-(1, 'visitante', NULL, 1),
+(1, 'visitante', NULL, 0),
 (2, 'registrado', NULL, 1),
 (3, 'administrador', NULL, 1);
 

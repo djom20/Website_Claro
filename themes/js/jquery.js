@@ -118,3 +118,9 @@ $(window).ready(function(){
         e.preventDefault();
 	});	
 });
+
+$(document).ready(function(){
+	$(document).bind("contextmenu",function(e){  //deshabilitar el click derecho
+ 		//return false;
+ 	});
+});

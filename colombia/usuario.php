@@ -2,13 +2,13 @@
 	if(!isset($_SESSION['userid'])){ header('location: ../'); }
 ?>
 <!DOCTYPE HTML>
-<html lang="es">
+<html lang="es-CO">
 <head>
 	<meta charset="utf-8">
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
 	<meta name="googlebot" content="index,follow"/>
-    <meta name="author" content="Ing. Jonathan Olier Miranda"/>
+    <meta name="author" content="Ing. Norman Henriquez Rosales"/>
     <link rel="shortcut icon" type="image/x-ico" href="../themes/ico/fav.ico" />
 	<link rel="stylesheet" type="text/css" href="../themes/css/bootstrap-responsive.min.css" media="all">
 	<link rel="stylesheet" type="text/css" href="../themes/css/bootstrap.min.css" media="all">

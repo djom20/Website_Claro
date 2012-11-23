@@ -18,8 +18,8 @@
 			<div class="row-fluid">
 				<div class="span12">
 					<div class="btn-group" style="width: auto; ">
-						<a class="btn btn-large tip-bottom" data-original-title="Nuevo"><i class="icon-file"></i></a>
-						<a class="btn btn-large tip-bottom" data-original-title="Buscar"><i class="icon-search"></i></a>
+						<a id="new_empresas"  class="btn btn-large tip-bottom" data-original-title="Nuevo"><i class="icon-file"></i></a>
+						<!-- <a class="btn btn-large tip-bottom" data-original-title="Buscar"><i class="icon-search"></i></a> -->
 					</div>
 					<div class="widget-box">
 						<div class="widget-title">
@@ -50,7 +50,7 @@
 										if($result > 0){
 											while($row=mysql_fetch_array($result)){
 												echo '<tr><td>'.$row['id'].'</td><td>'.$row['nombre'].'</td><td>'.$row['representante'].'</td><td>'.$row['direccion'].'</td><td>'.$row['correo'].'</td><td>'.$row['user'].'</td><td>'.$row['pais'].'</td>';
-												echo '<td><a href="" class="tip-top" data-original-title="Edit"><i class="icon-pencil"></i></a></td></tr>';
+												echo '<td><a id="'.$row['id'].'" class="link_empresas_editar" href="" class="tip-top" data-original-title="Edit"><i class="icon-pencil"></i></a></td></tr>';
 											}
 										}
 									?>

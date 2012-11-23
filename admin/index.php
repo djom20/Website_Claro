@@ -28,6 +28,14 @@
 		echo '<script type="text/javascript" src="../themes/js/admin/mostrar_servicios.js"></script>';
 		unset($_SESSION['reg6']);
 	}
+	if (isset($_SESSION['reg7'])) {
+		echo '<script type="text/javascript" src="../themes/js/admin/mostrar_empresas.js"></script>';
+		unset($_SESSION['reg7']);
+	}
+	if (isset($_SESSION['reg8'])) {
+		echo '<script type="text/javascript" src="../themes/js/admin/mostrar_asignaciones.js"></script>';
+		unset($_SESSION['reg8']);
+	}
 ?>
 <html lang="es-CO">
 	<head>
@@ -36,7 +44,7 @@
 	    <meta name="keywords" content=""/>
 	    <meta name="description" content=""/>
 		<meta name="googlebot" content="index,follow"/>
-	    <meta name="author" content="Ing. Jonathan Olier Miranda"/>
+	    <meta name="author" content="Ing. Norman Henriquez Rosales"/>
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
 	    <link rel="shortcut icon" type="image/x-ico" href="../themes/ico/fav.ico" />
 		<link rel="stylesheet" href="../themes/css/admin/stylesheet.css?id=<?php echo date('s'); ?>">
@@ -62,9 +70,20 @@
 		<?php if(file_exists('../mod/admin/paquetes.php')){ include('../mod/admin/paquetes.php'); } ?>
 		<?php if(file_exists('../mod/admin/servicios.php')){ include('../mod/admin/servicios.php'); } ?>
 		<?php if(file_exists('../mod/admin/asignaciones.php')){ include('../mod/admin/asignaciones.php'); } ?>
+		<?php if(file_exists('../mod/admin/asignar.php')){ include('../mod/admin/asignar.php'); } ?>
 		<?php if(file_exists('../mod/admin/seguridad.php')){ include('../mod/admin/seguridad.php'); } ?>
 		
-		<?php if(file_exists('../mod/admin/visitantes_editar.php')){ include('../mod/admin/visitantes_editar.php'); } ?>
+		<?php if(file_exists('../mod/admin/usuarios_editar.php')){ include('../mod/admin/usuarios_editar.php'); } ?>
+		<?php if(file_exists('../mod/admin/empresas_editar.php')){ include('../mod/admin/empresas_editar.php'); } ?>
+		<?php if(file_exists('../mod/admin/tipos_editar.php')){ include('../mod/admin/tipos_editar.php'); } ?>
+		<?php if(file_exists('../mod/admin/paquetes_editar.php')){ include('../mod/admin/paquetes_editar.php'); } ?>
+		<?php if(file_exists('../mod/admin/servicios_editar.php')){ include('../mod/admin/servicios_editar.php'); } ?>
+
+		<?php if(file_exists('../mod/admin/usuarios_new.php')){ include('../mod/admin/usuarios_new.php'); } ?>
+		<?php if(file_exists('../mod/admin/empresas_new.php')){ include('../mod/admin/empresas_new.php'); } ?>
+		<?php if(file_exists('../mod/admin/tipos_new.php')){ include('../mod/admin/tipos_new.php'); } ?>
+		<?php if(file_exists('../mod/admin/paquetes_new.php')){ include('../mod/admin/paquetes_new.php'); } ?>
+		<?php if(file_exists('../mod/admin/servicios_new.php')){ include('../mod/admin/servicios_new.php'); } ?>
 
 		<div id="gritter-notice-wrapper">
 			<div id="gritter-item-1" class="gritter-item-wrapper hover" style="">
@@ -94,5 +113,8 @@
         <script src="../themes/js/admin/unicorn.interface.js"></script>
         <script src="../themes/js/admin/unicorn.js"></script>
         <script src="../themes/js/disable select text.js"></script>
+        <script type="text/javascript">
+        	$('.toggleform').tooltip('toggle');
+        </script>
 	</body>
 </html>

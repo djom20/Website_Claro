@@ -100,3 +100,13 @@ nav li.active{
 #registro_empresa{
 	display: none;
 }
+.uneditable-input {
+	overflow: hidden !important;
+	white-space: nowrap !important;
+	cursor: not-allowed !important;
+	background-color: white !important;
+	border-color: #EEE !important;
+	-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+	-moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+}

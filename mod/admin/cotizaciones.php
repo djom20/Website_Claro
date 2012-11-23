@@ -17,9 +17,9 @@
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span12">
-					<div class="btn-group" style="width: auto; ">
+					<!--<div class="btn-group" style="width: auto; ">
 						<a class="btn btn-large tip-bottom" data-original-title="Buscar"><i class="icon-search"></i></a>						
-					</div>
+					</div>-->
 					<div class="widget-box">
 						<div class="widget-title">
 							<span class="icon">

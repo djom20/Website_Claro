@@ -2,7 +2,6 @@
 	session_start();
 	include('desconectar.php');
 	$ubi=$_SESSION['ubicacion'];
-	//$_SERVER['REMOTE_ADDR'];
 	include('offline.php');
 	session_destroy();
 

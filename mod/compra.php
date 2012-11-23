@@ -34,7 +34,7 @@
 												}
 												mysql_free_result($result2);
 											}
-											echo '<td class="neg" colspan="2"><strong>Total</strong></td>';
+											echo '<td class="neg" colspan="2"><strong>Subtotal</strong></td>';
 											echo '<td class="der neg"><strong>$'.$row['precio'].'</strong></td></tr>';
 										}
 										mysql_free_result($result);
